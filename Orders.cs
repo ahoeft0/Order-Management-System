@@ -23,35 +23,50 @@ namespace OnlineStore
             //Order view setup
             DataTable customerData = sendQuery("select first_name, last_name, customer_id from customer");
             customerData.Columns.Add("full_name", typeof(string), "first_name + ' ' + last_name");
-            cmbCustomer.DataSource = customerData;
-            cmbCustomer.DisplayMember = customerData.Columns[3].ColumnName;
-            cmbCustomer.ValueMember = customerData.Columns[2].ColumnName;
-            cmbCustomer.SelectedIndex = -1;
+            if(customerData.Rows.Count > 0)
+            {
+                cmbCustomer.DataSource = customerData;
+                cmbCustomer.DisplayMember = customerData.Columns[3].ColumnName;
+                cmbCustomer.ValueMember = customerData.Columns[2].ColumnName;
+                cmbCustomer.SelectedIndex = -1;
+            }
 
             //Order create setup
-            cmbCreateCustomer.DataSource = customerData;
-            cmbCreateCustomer.DisplayMember = customerData.Columns[3].ColumnName;
-            cmbCreateCustomer.ValueMember = customerData.Columns[2].ColumnName;
-            cmbCreateCustomer.SelectedIndex = -1;
+            if(customerData.Rows.Count > 0)
+            {
+                cmbCreateCustomer.DataSource = customerData;
+                cmbCreateCustomer.DisplayMember = customerData.Columns[3].ColumnName;
+                cmbCreateCustomer.ValueMember = customerData.Columns[2].ColumnName;
+                cmbCreateCustomer.SelectedIndex = -1;
+            }
 
             DataTable productData = sendQuery("select product_id, name, current_price from product where is_available");
             productData.Columns.Add("productInfo", typeof(string), "name + ': ' + current_price");
-            cmbCreateProduct.DataSource = productData;
-            cmbCreateProduct.DisplayMember = productData.Columns[3].ColumnName;
-            cmbCreateProduct.ValueMember = productData.Columns[0].ColumnName;
-            cmbCreateProduct.SelectedIndex = -1;
+            if(productData.Rows.Count > 0)
+            {
+                cmbCreateProduct.DataSource = productData;
+                cmbCreateProduct.DisplayMember = productData.Columns[3].ColumnName;
+                cmbCreateProduct.ValueMember = productData.Columns[0].ColumnName;
+                cmbCreateProduct.SelectedIndex = -1;
+            }
 
             //Order update setup
             DataTable orderData = sendQuery("select order_id " + "from \"Order\" order by order_id");
-            cmbUpdateOrder.DataSource = orderData;
-            cmbUpdateOrder.DisplayMember = orderData.Columns[0].ColumnName;
-            cmbUpdateOrder.ValueMember = orderData.Columns[0].ColumnName;
-            cmbUpdateOrder.SelectedIndex = -1;
+            if(orderData.Rows.Count > 0)
+            {
+                cmbUpdateOrder.DataSource = orderData;
+                cmbUpdateOrder.DisplayMember = orderData.Columns[0].ColumnName;
+                cmbUpdateOrder.ValueMember = orderData.Columns[0].ColumnName;
+                cmbUpdateOrder.SelectedIndex = -1;
+            }
 
-            cmbUpdateProduct.DataSource = productData;
-            cmbUpdateProduct.DisplayMember = productData.Columns[3].ColumnName;
-            cmbUpdateProduct.ValueMember = productData.Columns[0].ColumnName;
-            cmbUpdateProduct.SelectedIndex = -1;
+            if(productData.Rows.Count > 0)
+            {
+                cmbUpdateProduct.DataSource = productData;
+                cmbUpdateProduct.DisplayMember = productData.Columns[3].ColumnName;
+                cmbUpdateProduct.ValueMember = productData.Columns[0].ColumnName;
+                cmbUpdateProduct.SelectedIndex = -1;
+            }
         }
 
         private DataTable sendQuery(string query)
@@ -222,7 +237,7 @@ namespace OnlineStore
 
         private void btnSubmitOrder_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure to submit this order?",
+            var confirmResult = MessageBox.Show("Are you sure you want to submit this order?",
                                      "Confirm Submit",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
@@ -253,10 +268,13 @@ namespace OnlineStore
                 txtCreateTotalPrice.Text = "$0.00";
 
                 DataTable orderData = sendQuery("select order_id " + "from \"Order\" order by order_id");
-                cmbUpdateOrder.DataSource = orderData;
-                cmbUpdateOrder.DisplayMember = orderData.Columns[0].ColumnName;
-                cmbUpdateOrder.ValueMember = orderData.Columns[0].ColumnName;
-                cmbUpdateOrder.SelectedIndex = -1;
+                if(orderData.Rows.Count > 0)
+                {
+                    cmbUpdateOrder.DataSource = orderData;
+                    cmbUpdateOrder.DisplayMember = orderData.Columns[0].ColumnName;
+                    cmbUpdateOrder.ValueMember = orderData.Columns[0].ColumnName;
+                    cmbUpdateOrder.SelectedIndex = -1;
+                }
             }
         }
 
@@ -302,12 +320,13 @@ namespace OnlineStore
                                                 "join product as p on p.product_id = io.product_id " +
                                                 "where io.order_id = " + cmbUpdateOrder.SelectedValue + ";");
             items_ordered.Columns.Add("entry", typeof(string), "name + ':' + quantity + ':' + cost");
-            DataTable totalCost = sendQuery("select total_cost from \"Order\" where order_id = " + cmbUpdateOrder.SelectedValue + ";");
+            DataTable totalExpense = sendQuery("select total_cost from \"Order\" where order_id = " + cmbUpdateOrder.SelectedValue + ";");
             for (int i = 0; i < items_ordered.Rows.Count; i++)
             {
                 lstBxUpdateOrderInfo.Items.Add(items_ordered.Rows[i].ItemArray[3].ToString());
             }
-            txtUpdateTotalCost.Text = totalCost.Rows[0].ItemArray[0].ToString();
+            totalCost = Decimal.Parse(totalExpense.Rows[0].ItemArray[0].ToString());
+            txtUpdateTotalCost.Text = "$" + totalCost;
             if (cmbUpdateOrder.SelectedIndex > -1)
             {
                 btnDeleteOrder.Enabled = true;
@@ -412,7 +431,7 @@ namespace OnlineStore
 
         private void btnUpdateOrder_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure to update this order?",
+            var confirmResult = MessageBox.Show("Are you sure you want to update this order?",
                                      "Confirm Update",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
@@ -433,7 +452,7 @@ namespace OnlineStore
 
         private void btnDeleteOrder_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure to delete this order?",
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this order?",
                                      "Confirm Delete",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
@@ -452,10 +471,13 @@ namespace OnlineStore
                 txtUpdateTotalCost.Text = "$0.00";
 
                 DataTable orderData = sendQuery("select order_id " + "from \"Order\" order by order_id");
-                cmbUpdateOrder.DataSource = orderData;
-                cmbUpdateOrder.DisplayMember = orderData.Columns[0].ColumnName;
-                cmbUpdateOrder.ValueMember = orderData.Columns[0].ColumnName;
-                cmbUpdateOrder.SelectedIndex = -1;
+                if(orderData.Rows.Count > 0)
+                {
+                    cmbUpdateOrder.DataSource = orderData;
+                    cmbUpdateOrder.DisplayMember = orderData.Columns[0].ColumnName;
+                    cmbUpdateOrder.ValueMember = orderData.Columns[0].ColumnName;
+                    cmbUpdateOrder.SelectedIndex = -1;
+                }
             }
         }
     }

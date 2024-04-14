@@ -57,6 +57,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cmbCreateCustomer = new System.Windows.Forms.ComboBox();
             this.updateOrders = new System.Windows.Forms.TabPage();
+            this.btnDeleteOrder = new System.Windows.Forms.Button();
             this.nupUpdateQuantity = new System.Windows.Forms.NumericUpDown();
             this.btnUpdateOrder = new System.Windows.Forms.Button();
             this.btnUpdateRemoveOrder = new System.Windows.Forms.Button();
@@ -70,7 +71,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.cmbUpdateOrder = new System.Windows.Forms.ComboBox();
-            this.btnDeleteOrder = new System.Windows.Forms.Button();
             this.tabOrders.SuspendLayout();
             this.viewOrders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderInformation)).BeginInit();
@@ -85,11 +85,11 @@
             this.tabOrders.Controls.Add(this.viewOrders);
             this.tabOrders.Controls.Add(this.createOrders);
             this.tabOrders.Controls.Add(this.updateOrders);
-            this.tabOrders.Location = new System.Drawing.Point(9, 10);
-            this.tabOrders.Margin = new System.Windows.Forms.Padding(2);
+            this.tabOrders.Location = new System.Drawing.Point(12, 12);
+            this.tabOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabOrders.Name = "tabOrders";
             this.tabOrders.SelectedIndex = 0;
-            this.tabOrders.Size = new System.Drawing.Size(582, 346);
+            this.tabOrders.Size = new System.Drawing.Size(776, 426);
             this.tabOrders.TabIndex = 0;
             this.tabOrders.SelectedIndexChanged += new System.EventHandler(this.ordersTabControl_SelectedIndexChanged);
             // 
@@ -108,11 +108,11 @@
             this.viewOrders.Controls.Add(this.label1);
             this.viewOrders.Controls.Add(this.cmbCustomer);
             this.viewOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewOrders.Location = new System.Drawing.Point(4, 22);
-            this.viewOrders.Margin = new System.Windows.Forms.Padding(2);
+            this.viewOrders.Location = new System.Drawing.Point(4, 25);
+            this.viewOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.viewOrders.Name = "viewOrders";
-            this.viewOrders.Padding = new System.Windows.Forms.Padding(2);
-            this.viewOrders.Size = new System.Drawing.Size(574, 320);
+            this.viewOrders.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.viewOrders.Size = new System.Drawing.Size(768, 397);
             this.viewOrders.TabIndex = 0;
             this.viewOrders.Text = "View";
             this.viewOrders.UseVisualStyleBackColor = true;
@@ -120,31 +120,30 @@
             // txtTotalPrice
             // 
             this.txtTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPrice.Location = new System.Drawing.Point(8, 219);
-            this.txtTotalPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTotalPrice.Location = new System.Drawing.Point(11, 270);
+            this.txtTotalPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTotalPrice.Name = "txtTotalPrice";
             this.txtTotalPrice.ReadOnly = true;
-            this.txtTotalPrice.Size = new System.Drawing.Size(131, 19);
+            this.txtTotalPrice.Size = new System.Drawing.Size(173, 22);
             this.txtTotalPrice.TabIndex = 13;
             // 
             // txtDateOrdered
             // 
             this.txtDateOrdered.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDateOrdered.Location = new System.Drawing.Point(8, 266);
-            this.txtDateOrdered.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDateOrdered.Location = new System.Drawing.Point(11, 327);
+            this.txtDateOrdered.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDateOrdered.Name = "txtDateOrdered";
             this.txtDateOrdered.ReadOnly = true;
-            this.txtDateOrdered.Size = new System.Drawing.Size(131, 19);
+            this.txtDateOrdered.Size = new System.Drawing.Size(173, 22);
             this.txtDateOrdered.TabIndex = 12;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(5, 200);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(7, 246);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 17);
+            this.label6.Size = new System.Drawing.Size(101, 20);
             this.label6.TabIndex = 11;
             this.label6.Text = "Total Price";
             // 
@@ -152,31 +151,29 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(5, 248);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(7, 305);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 17);
+            this.label5.Size = new System.Drawing.Size(123, 20);
             this.label5.TabIndex = 10;
             this.label5.Text = "Date Ordered";
             // 
             // txtOrderNumber
             // 
             this.txtOrderNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOrderNumber.Location = new System.Drawing.Point(8, 167);
-            this.txtOrderNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.txtOrderNumber.Location = new System.Drawing.Point(11, 206);
+            this.txtOrderNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtOrderNumber.Name = "txtOrderNumber";
             this.txtOrderNumber.ReadOnly = true;
-            this.txtOrderNumber.Size = new System.Drawing.Size(131, 19);
+            this.txtOrderNumber.Size = new System.Drawing.Size(173, 22);
             this.txtOrderNumber.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(5, 148);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(7, 182);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 17);
+            this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Order Number";
             // 
@@ -184,10 +181,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(190, 13);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(253, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(151, 20);
+            this.label3.Size = new System.Drawing.Size(180, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Order Information";
             // 
@@ -199,13 +195,13 @@
             this.dgvOrderInformation.AllowUserToResizeRows = false;
             this.dgvOrderInformation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOrderInformation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrderInformation.Location = new System.Drawing.Point(194, 36);
-            this.dgvOrderInformation.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvOrderInformation.Location = new System.Drawing.Point(259, 44);
+            this.dgvOrderInformation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvOrderInformation.Name = "dgvOrderInformation";
             this.dgvOrderInformation.RowHeadersVisible = false;
             this.dgvOrderInformation.RowHeadersWidth = 51;
             this.dgvOrderInformation.RowTemplate.Height = 24;
-            this.dgvOrderInformation.Size = new System.Drawing.Size(370, 267);
+            this.dgvOrderInformation.Size = new System.Drawing.Size(493, 329);
             this.dgvOrderInformation.TabIndex = 4;
             // 
             // cmbOrder
@@ -213,10 +209,10 @@
             this.cmbOrder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbOrder.FormattingEnabled = true;
-            this.cmbOrder.Location = new System.Drawing.Point(8, 100);
-            this.cmbOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbOrder.Location = new System.Drawing.Point(11, 123);
+            this.cmbOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbOrder.Name = "cmbOrder";
-            this.cmbOrder.Size = new System.Drawing.Size(140, 21);
+            this.cmbOrder.Size = new System.Drawing.Size(185, 24);
             this.cmbOrder.TabIndex = 3;
             this.cmbOrder.SelectionChangeCommitted += new System.EventHandler(this.cmbOrder_SelectedIndexChanged);
             // 
@@ -224,10 +220,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 77);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(5, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 20);
+            this.label2.Size = new System.Drawing.Size(67, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Order";
             // 
@@ -235,10 +230,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 13);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(5, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 20);
+            this.label1.Size = new System.Drawing.Size(105, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Customer";
             // 
@@ -247,10 +241,10 @@
             this.cmbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCustomer.FormattingEnabled = true;
-            this.cmbCustomer.Location = new System.Drawing.Point(7, 36);
-            this.cmbCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCustomer.Location = new System.Drawing.Point(9, 44);
+            this.cmbCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(140, 21);
+            this.cmbCustomer.Size = new System.Drawing.Size(185, 24);
             this.cmbCustomer.TabIndex = 0;
             this.cmbCustomer.SelectionChangeCommitted += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
             // 
@@ -269,19 +263,19 @@
             this.createOrders.Controls.Add(this.label7);
             this.createOrders.Controls.Add(this.label8);
             this.createOrders.Controls.Add(this.cmbCreateCustomer);
-            this.createOrders.Location = new System.Drawing.Point(4, 22);
-            this.createOrders.Margin = new System.Windows.Forms.Padding(2);
+            this.createOrders.Location = new System.Drawing.Point(4, 25);
+            this.createOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.createOrders.Name = "createOrders";
-            this.createOrders.Padding = new System.Windows.Forms.Padding(2);
-            this.createOrders.Size = new System.Drawing.Size(574, 320);
+            this.createOrders.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.createOrders.Size = new System.Drawing.Size(768, 397);
             this.createOrders.TabIndex = 1;
             this.createOrders.Text = "Create";
             this.createOrders.UseVisualStyleBackColor = true;
             // 
             // nupCreateQuantity
             // 
-            this.nupCreateQuantity.Location = new System.Drawing.Point(8, 167);
-            this.nupCreateQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.nupCreateQuantity.Location = new System.Drawing.Point(11, 206);
+            this.nupCreateQuantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nupCreateQuantity.Maximum = new decimal(new int[] {
             50,
             0,
@@ -293,7 +287,7 @@
             0,
             0});
             this.nupCreateQuantity.Name = "nupCreateQuantity";
-            this.nupCreateQuantity.Size = new System.Drawing.Size(140, 20);
+            this.nupCreateQuantity.Size = new System.Drawing.Size(187, 22);
             this.nupCreateQuantity.TabIndex = 21;
             this.nupCreateQuantity.Value = new decimal(new int[] {
             1,
@@ -304,10 +298,10 @@
             // btnSubmitOrder
             // 
             this.btnSubmitOrder.Enabled = false;
-            this.btnSubmitOrder.Location = new System.Drawing.Point(468, 264);
-            this.btnSubmitOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubmitOrder.Location = new System.Drawing.Point(624, 325);
+            this.btnSubmitOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubmitOrder.Name = "btnSubmitOrder";
-            this.btnSubmitOrder.Size = new System.Drawing.Size(92, 44);
+            this.btnSubmitOrder.Size = new System.Drawing.Size(123, 54);
             this.btnSubmitOrder.TabIndex = 20;
             this.btnSubmitOrder.Text = "Submit Order";
             this.btnSubmitOrder.UseVisualStyleBackColor = true;
@@ -316,10 +310,10 @@
             // btnRemoveFromOrder
             // 
             this.btnRemoveFromOrder.Enabled = false;
-            this.btnRemoveFromOrder.Location = new System.Drawing.Point(193, 264);
-            this.btnRemoveFromOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoveFromOrder.Location = new System.Drawing.Point(257, 325);
+            this.btnRemoveFromOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveFromOrder.Name = "btnRemoveFromOrder";
-            this.btnRemoveFromOrder.Size = new System.Drawing.Size(92, 44);
+            this.btnRemoveFromOrder.Size = new System.Drawing.Size(123, 54);
             this.btnRemoveFromOrder.TabIndex = 19;
             this.btnRemoveFromOrder.Text = "Remove from Order";
             this.btnRemoveFromOrder.UseVisualStyleBackColor = true;
@@ -328,10 +322,10 @@
             // btnAddToOrder
             // 
             this.btnAddToOrder.Enabled = false;
-            this.btnAddToOrder.Location = new System.Drawing.Point(8, 203);
-            this.btnAddToOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddToOrder.Location = new System.Drawing.Point(11, 250);
+            this.btnAddToOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddToOrder.Name = "btnAddToOrder";
-            this.btnAddToOrder.Size = new System.Drawing.Size(92, 44);
+            this.btnAddToOrder.Size = new System.Drawing.Size(123, 54);
             this.btnAddToOrder.TabIndex = 18;
             this.btnAddToOrder.Text = "Add to Order";
             this.btnAddToOrder.UseVisualStyleBackColor = true;
@@ -340,11 +334,12 @@
             // lstBxOrderSummary
             // 
             this.lstBxOrderSummary.FormattingEnabled = true;
-            this.lstBxOrderSummary.Location = new System.Drawing.Point(193, 36);
-            this.lstBxOrderSummary.Margin = new System.Windows.Forms.Padding(2);
+            this.lstBxOrderSummary.ItemHeight = 16;
+            this.lstBxOrderSummary.Location = new System.Drawing.Point(257, 44);
+            this.lstBxOrderSummary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstBxOrderSummary.MultiColumn = true;
             this.lstBxOrderSummary.Name = "lstBxOrderSummary";
-            this.lstBxOrderSummary.Size = new System.Drawing.Size(368, 212);
+            this.lstBxOrderSummary.Size = new System.Drawing.Size(489, 260);
             this.lstBxOrderSummary.TabIndex = 17;
             this.lstBxOrderSummary.SelectedIndexChanged += new System.EventHandler(this.lstBxOrderSummary_SelectedIndexChanged);
             // 
@@ -352,21 +347,20 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(190, 13);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(253, 16);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(133, 20);
+            this.label11.Size = new System.Drawing.Size(164, 25);
             this.label11.TabIndex = 16;
             this.label11.Text = "Order Summary";
             // 
             // txtCreateTotalPrice
             // 
             this.txtCreateTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreateTotalPrice.Location = new System.Drawing.Point(312, 285);
-            this.txtCreateTotalPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCreateTotalPrice.Location = new System.Drawing.Point(416, 351);
+            this.txtCreateTotalPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCreateTotalPrice.Name = "txtCreateTotalPrice";
             this.txtCreateTotalPrice.ReadOnly = true;
-            this.txtCreateTotalPrice.Size = new System.Drawing.Size(131, 19);
+            this.txtCreateTotalPrice.Size = new System.Drawing.Size(173, 22);
             this.txtCreateTotalPrice.TabIndex = 15;
             this.txtCreateTotalPrice.Text = "$0.00";
             // 
@@ -374,10 +368,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(337, 266);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(449, 327);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 17);
+            this.label10.Size = new System.Drawing.Size(101, 20);
             this.label10.TabIndex = 14;
             this.label10.Text = "Total Price";
             // 
@@ -385,10 +378,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(4, 144);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(5, 177);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(76, 20);
+            this.label9.Size = new System.Drawing.Size(93, 25);
             this.label9.TabIndex = 8;
             this.label9.Text = "Quantity";
             // 
@@ -397,10 +389,10 @@
             this.cmbCreateProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCreateProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreateProduct.FormattingEnabled = true;
-            this.cmbCreateProduct.Location = new System.Drawing.Point(8, 100);
-            this.cmbCreateProduct.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCreateProduct.Location = new System.Drawing.Point(11, 123);
+            this.cmbCreateProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCreateProduct.Name = "cmbCreateProduct";
-            this.cmbCreateProduct.Size = new System.Drawing.Size(140, 21);
+            this.cmbCreateProduct.Size = new System.Drawing.Size(185, 24);
             this.cmbCreateProduct.TabIndex = 7;
             this.cmbCreateProduct.SelectionChangeCommitted += new System.EventHandler(this.cmbCreateProduct_SelectedIndexChanged);
             // 
@@ -408,10 +400,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(4, 77);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(5, 95);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 20);
+            this.label7.Size = new System.Drawing.Size(86, 25);
             this.label7.TabIndex = 6;
             this.label7.Text = "Product";
             // 
@@ -419,10 +410,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(4, 13);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(5, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 20);
+            this.label8.Size = new System.Drawing.Size(105, 25);
             this.label8.TabIndex = 5;
             this.label8.Text = "Customer";
             // 
@@ -431,10 +421,10 @@
             this.cmbCreateCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCreateCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreateCustomer.FormattingEnabled = true;
-            this.cmbCreateCustomer.Location = new System.Drawing.Point(7, 36);
-            this.cmbCreateCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCreateCustomer.Location = new System.Drawing.Point(9, 44);
+            this.cmbCreateCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCreateCustomer.Name = "cmbCreateCustomer";
-            this.cmbCreateCustomer.Size = new System.Drawing.Size(140, 21);
+            this.cmbCreateCustomer.Size = new System.Drawing.Size(185, 24);
             this.cmbCreateCustomer.TabIndex = 4;
             this.cmbCreateCustomer.SelectionChangeCommitted += new System.EventHandler(this.cmbCreateCustomer_SelectedIndexChanged);
             // 
@@ -454,18 +444,30 @@
             this.updateOrders.Controls.Add(this.label15);
             this.updateOrders.Controls.Add(this.label16);
             this.updateOrders.Controls.Add(this.cmbUpdateOrder);
-            this.updateOrders.Location = new System.Drawing.Point(4, 22);
-            this.updateOrders.Margin = new System.Windows.Forms.Padding(2);
+            this.updateOrders.Location = new System.Drawing.Point(4, 25);
+            this.updateOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.updateOrders.Name = "updateOrders";
-            this.updateOrders.Size = new System.Drawing.Size(574, 320);
+            this.updateOrders.Size = new System.Drawing.Size(768, 397);
             this.updateOrders.TabIndex = 2;
             this.updateOrders.Text = "Update/Delete";
             this.updateOrders.UseVisualStyleBackColor = true;
             // 
+            // btnDeleteOrder
+            // 
+            this.btnDeleteOrder.Enabled = false;
+            this.btnDeleteOrder.Location = new System.Drawing.Point(11, 320);
+            this.btnDeleteOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteOrder.Name = "btnDeleteOrder";
+            this.btnDeleteOrder.Size = new System.Drawing.Size(123, 54);
+            this.btnDeleteOrder.TabIndex = 35;
+            this.btnDeleteOrder.Text = "Delete Order";
+            this.btnDeleteOrder.UseVisualStyleBackColor = true;
+            this.btnDeleteOrder.Click += new System.EventHandler(this.btnDeleteOrder_Click);
+            // 
             // nupUpdateQuantity
             // 
-            this.nupUpdateQuantity.Location = new System.Drawing.Point(8, 167);
-            this.nupUpdateQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.nupUpdateQuantity.Location = new System.Drawing.Point(11, 206);
+            this.nupUpdateQuantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nupUpdateQuantity.Maximum = new decimal(new int[] {
             50,
             0,
@@ -477,7 +479,7 @@
             0,
             0});
             this.nupUpdateQuantity.Name = "nupUpdateQuantity";
-            this.nupUpdateQuantity.Size = new System.Drawing.Size(140, 20);
+            this.nupUpdateQuantity.Size = new System.Drawing.Size(187, 22);
             this.nupUpdateQuantity.TabIndex = 34;
             this.nupUpdateQuantity.Value = new decimal(new int[] {
             1,
@@ -488,10 +490,10 @@
             // btnUpdateOrder
             // 
             this.btnUpdateOrder.Enabled = false;
-            this.btnUpdateOrder.Location = new System.Drawing.Point(468, 264);
-            this.btnUpdateOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdateOrder.Location = new System.Drawing.Point(624, 325);
+            this.btnUpdateOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdateOrder.Name = "btnUpdateOrder";
-            this.btnUpdateOrder.Size = new System.Drawing.Size(92, 44);
+            this.btnUpdateOrder.Size = new System.Drawing.Size(123, 54);
             this.btnUpdateOrder.TabIndex = 33;
             this.btnUpdateOrder.Text = "Update Order";
             this.btnUpdateOrder.UseVisualStyleBackColor = true;
@@ -500,10 +502,10 @@
             // btnUpdateRemoveOrder
             // 
             this.btnUpdateRemoveOrder.Enabled = false;
-            this.btnUpdateRemoveOrder.Location = new System.Drawing.Point(193, 264);
-            this.btnUpdateRemoveOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdateRemoveOrder.Location = new System.Drawing.Point(257, 325);
+            this.btnUpdateRemoveOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdateRemoveOrder.Name = "btnUpdateRemoveOrder";
-            this.btnUpdateRemoveOrder.Size = new System.Drawing.Size(92, 44);
+            this.btnUpdateRemoveOrder.Size = new System.Drawing.Size(123, 54);
             this.btnUpdateRemoveOrder.TabIndex = 32;
             this.btnUpdateRemoveOrder.Text = "Remove from Order";
             this.btnUpdateRemoveOrder.UseVisualStyleBackColor = true;
@@ -512,10 +514,10 @@
             // btnUpdateAddToOrder
             // 
             this.btnUpdateAddToOrder.Enabled = false;
-            this.btnUpdateAddToOrder.Location = new System.Drawing.Point(8, 203);
-            this.btnUpdateAddToOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdateAddToOrder.Location = new System.Drawing.Point(11, 250);
+            this.btnUpdateAddToOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdateAddToOrder.Name = "btnUpdateAddToOrder";
-            this.btnUpdateAddToOrder.Size = new System.Drawing.Size(92, 44);
+            this.btnUpdateAddToOrder.Size = new System.Drawing.Size(123, 54);
             this.btnUpdateAddToOrder.TabIndex = 31;
             this.btnUpdateAddToOrder.Text = "Add to Order";
             this.btnUpdateAddToOrder.UseVisualStyleBackColor = true;
@@ -524,11 +526,12 @@
             // lstBxUpdateOrderInfo
             // 
             this.lstBxUpdateOrderInfo.FormattingEnabled = true;
-            this.lstBxUpdateOrderInfo.Location = new System.Drawing.Point(193, 36);
-            this.lstBxUpdateOrderInfo.Margin = new System.Windows.Forms.Padding(2);
+            this.lstBxUpdateOrderInfo.ItemHeight = 16;
+            this.lstBxUpdateOrderInfo.Location = new System.Drawing.Point(257, 44);
+            this.lstBxUpdateOrderInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstBxUpdateOrderInfo.MultiColumn = true;
             this.lstBxUpdateOrderInfo.Name = "lstBxUpdateOrderInfo";
-            this.lstBxUpdateOrderInfo.Size = new System.Drawing.Size(368, 212);
+            this.lstBxUpdateOrderInfo.Size = new System.Drawing.Size(489, 260);
             this.lstBxUpdateOrderInfo.TabIndex = 30;
             this.lstBxUpdateOrderInfo.SelectedIndexChanged += new System.EventHandler(this.lstBxUpdateOrderInfo_SelectedIndexChanged);
             // 
@@ -536,21 +539,20 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(190, 13);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(253, 16);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(133, 20);
+            this.label12.Size = new System.Drawing.Size(164, 25);
             this.label12.TabIndex = 29;
             this.label12.Text = "Order Summary";
             // 
             // txtUpdateTotalCost
             // 
             this.txtUpdateTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUpdateTotalCost.Location = new System.Drawing.Point(312, 285);
-            this.txtUpdateTotalCost.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUpdateTotalCost.Location = new System.Drawing.Point(416, 351);
+            this.txtUpdateTotalCost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUpdateTotalCost.Name = "txtUpdateTotalCost";
             this.txtUpdateTotalCost.ReadOnly = true;
-            this.txtUpdateTotalCost.Size = new System.Drawing.Size(131, 19);
+            this.txtUpdateTotalCost.Size = new System.Drawing.Size(173, 22);
             this.txtUpdateTotalCost.TabIndex = 28;
             this.txtUpdateTotalCost.Text = "$0.00";
             // 
@@ -558,10 +560,9 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(337, 266);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(449, 327);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(87, 17);
+            this.label13.Size = new System.Drawing.Size(101, 20);
             this.label13.TabIndex = 27;
             this.label13.Text = "Total Price";
             // 
@@ -569,10 +570,9 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(4, 144);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(5, 177);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(76, 20);
+            this.label14.Size = new System.Drawing.Size(93, 25);
             this.label14.TabIndex = 26;
             this.label14.Text = "Quantity";
             // 
@@ -581,10 +581,10 @@
             this.cmbUpdateProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUpdateProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUpdateProduct.FormattingEnabled = true;
-            this.cmbUpdateProduct.Location = new System.Drawing.Point(8, 100);
-            this.cmbUpdateProduct.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbUpdateProduct.Location = new System.Drawing.Point(11, 123);
+            this.cmbUpdateProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbUpdateProduct.Name = "cmbUpdateProduct";
-            this.cmbUpdateProduct.Size = new System.Drawing.Size(140, 21);
+            this.cmbUpdateProduct.Size = new System.Drawing.Size(185, 24);
             this.cmbUpdateProduct.TabIndex = 25;
             this.cmbUpdateProduct.SelectedIndexChanged += new System.EventHandler(this.cmbUpdateProduct_SelectedIndexChanged);
             // 
@@ -592,10 +592,9 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(4, 77);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Location = new System.Drawing.Point(5, 95);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(71, 20);
+            this.label15.Size = new System.Drawing.Size(86, 25);
             this.label15.TabIndex = 24;
             this.label15.Text = "Product";
             // 
@@ -603,10 +602,9 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(4, 13);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Location = new System.Drawing.Point(5, 16);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(54, 20);
+            this.label16.Size = new System.Drawing.Size(67, 25);
             this.label16.TabIndex = 23;
             this.label16.Text = "Order";
             // 
@@ -615,33 +613,21 @@
             this.cmbUpdateOrder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUpdateOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUpdateOrder.FormattingEnabled = true;
-            this.cmbUpdateOrder.Location = new System.Drawing.Point(7, 36);
-            this.cmbUpdateOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbUpdateOrder.Location = new System.Drawing.Point(9, 44);
+            this.cmbUpdateOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbUpdateOrder.Name = "cmbUpdateOrder";
-            this.cmbUpdateOrder.Size = new System.Drawing.Size(140, 21);
+            this.cmbUpdateOrder.Size = new System.Drawing.Size(185, 24);
             this.cmbUpdateOrder.TabIndex = 22;
             this.cmbUpdateOrder.SelectionChangeCommitted += new System.EventHandler(this.cmbUpdateOrder_SelectedIndexChanged);
             // 
-            // btnDeleteOrder
-            // 
-            this.btnDeleteOrder.Enabled = false;
-            this.btnDeleteOrder.Location = new System.Drawing.Point(8, 260);
-            this.btnDeleteOrder.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeleteOrder.Name = "btnDeleteOrder";
-            this.btnDeleteOrder.Size = new System.Drawing.Size(92, 44);
-            this.btnDeleteOrder.TabIndex = 35;
-            this.btnDeleteOrder.Text = "Delete Order";
-            this.btnDeleteOrder.UseVisualStyleBackColor = true;
-            this.btnDeleteOrder.Click += new System.EventHandler(this.btnDeleteOrder_Click);
-            // 
             // Orders
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabOrders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "Orders";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
