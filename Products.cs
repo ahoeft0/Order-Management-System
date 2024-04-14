@@ -26,6 +26,7 @@ namespace OnlineStore
         {
             InitializeComponent();
 
+            //View Load
             dgvProductInformation.DataSource = sendQuery(productSelectQuery);
 
             DataTable mostExpensiveProduct = sendQuery(productSelectQuery + "order by p.current_price desc");
@@ -51,6 +52,7 @@ namespace OnlineStore
                 cmbCategoryFilter.SelectedIndex = -1;
             }
 
+            //Price Change Load
             DataTable productData = sendQuery("select product_id, name from product");
             if (productData.Rows.Count > 0)
             {
@@ -58,6 +60,47 @@ namespace OnlineStore
                 cmbProductPriceChange.DisplayMember = productData.Columns[1].ColumnName;
                 cmbProductPriceChange.ValueMember = productData.Columns[0].ColumnName;
                 cmbProductPriceChange.SelectedIndex = -1;
+            }
+
+            //Create Load
+            if (categoryData.Rows.Count > 0)
+            {
+                cmbCreateProductCategory.DataSource = categoryData;
+                cmbCreateProductCategory.DisplayMember = categoryData.Columns[1].ColumnName;
+                cmbCreateProductCategory.ValueMember = categoryData.Columns[0].ColumnName;
+                cmbCreateProductCategory.SelectedIndex = -1;
+            }
+
+            if (providerData.Rows.Count > 0)
+            {
+                cmbCreateProductProvider.DataSource = providerData;
+                cmbCreateProductProvider.DisplayMember = providerData.Columns[1].ColumnName;
+                cmbCreateProductProvider.ValueMember = providerData.Columns[0].ColumnName;
+                cmbCreateProductProvider.SelectedIndex = -1;
+            }
+
+            //Update Delete load
+            if (categoryData.Rows.Count > 0)
+            {
+                cmbUpdateProductCategory.DataSource = categoryData;
+                cmbUpdateProductCategory.DisplayMember = categoryData.Columns[1].ColumnName;
+                cmbUpdateProductCategory.ValueMember = categoryData.Columns[0].ColumnName;
+                cmbUpdateProductCategory.SelectedIndex = -1;
+            }
+
+            if (providerData.Rows.Count > 0)
+            {
+                cmbUpdateProductProvider.DataSource = providerData;
+                cmbUpdateProductProvider.DisplayMember = providerData.Columns[1].ColumnName;
+                cmbUpdateProductProvider.ValueMember = providerData.Columns[0].ColumnName;
+                cmbUpdateProductProvider.SelectedIndex = -1;
+            }
+            if (productData.Rows.Count > 0)
+            {
+                cmbProductSelect.DataSource = productData;
+                cmbProductSelect.DisplayMember = productData.Columns[1].ColumnName;
+                cmbProductSelect.ValueMember = productData.Columns[0].ColumnName;
+                cmbProductSelect.SelectedIndex = -1;
             }
         }
         
@@ -235,6 +278,25 @@ namespace OnlineStore
             btnOriginalPrice.Enabled = false;
             txtCurrentPrice.Text = "";
             dgvPriceChangeHistory.DataSource = null;
+
+            //Update Delete Reset
+            cmbProductSelect.SelectedIndex = -1;
+            txtCreateProductName.Text = "";
+            cmbCreateProductCategory.SelectedIndex = -1;
+            cmbCreateProductProvider.SelectedIndex = -1;
+            txtCreateProductStock.Text = "";
+            txtCreateProductPrice.Text = "";
+            cmbCreateProductIsAvailable.SelectedIndex = -1;
+            txtCreateProductDescription.Text = "";
+
+            //Create Reset
+            txtUpdateProductName.Text = "";
+            cmbUpdateProductCategory.SelectedIndex = -1;
+            cmbUpdateProductProvider.SelectedIndex = -1;
+            txtUpdateProductStock.Text = "";
+            txtUpdateProductPrice.Text = "";
+            cmbUpdateProductIsAvailable.SelectedIndex = -1;
+            txtUpdateProductDescription.Text = "";
         }
     }
 }
