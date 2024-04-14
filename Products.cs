@@ -12,20 +12,11 @@ using System.Windows.Forms;
 namespace OnlineStore
 {
     // Form for CRUD for everything except orders
-    public partial class Administration : Form
+    public partial class Products : Form
     {
-        public Administration()
+        public Products()
         {
             InitializeComponent();
-
-            // Populate views of each model with all data
-            dgvCustomers.DataSource = sendQuery("SELECT * FROM customer");
-            dgvCustomers.DataSource = sendQuery("SELECT * FROM customer");
-            dgvCustomers.DataSource = sendQuery("SELECT * FROM customer");
-            dgvCustomers.DataSource = sendQuery("SELECT * FROM customer");
-            dgvCustomers.DataSource = sendQuery("SELECT * FROM customer");
-            dgvCustomers.DataSource = sendQuery("SELECT * FROM customer");
-            dgvCustomers.DataSource = sendQuery("SELECT * FROM customer");
         }
 
         private DataTable sendQuery(string query)

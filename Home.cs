@@ -48,5 +48,13 @@ namespace OnlineStore
             orderForm.ShowDialog();
             this.Show();  //this.CLose() (if we want it to close and not reopen)
         }
+
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            Products productsForm = new Products();
+            this.Hide();
+            productsForm.ShowDialog();
+            this.Show();  //this.CLose() (if we want it to close and not reopen)
+        }
     }
 }
