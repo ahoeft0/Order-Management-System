@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -187,13 +188,6 @@ namespace OnlineStore
 
         private void btnSubmitPriceChange_Click(object sender, EventArgs e)
         {
-            //var confirmResult = MessageBox.Show("Are you sure you want to submit this order?",
-            //                        "Confirm Submit",
-            //                        MessageBoxButtons.YesNo);
-            //if (confirmResult == DialogResult.Yes)
-            //{
-
-            //}
             var confirmResult = MessageBox.Show("Are you sure you want to change the price of this product?",
                                     "Confirm Price Change",
                                     MessageBoxButtons.YesNo);
@@ -281,37 +275,56 @@ namespace OnlineStore
             txtCurrentPrice.Text = "";
             dgvPriceChangeHistory.DataSource = null;
 
-            //Update Delete Reset
-            cmbProductSelect.SelectedIndex = -1;
+            //Create Reset
             txtCreateProductName.Text = "";
             cmbCreateProductCategory.SelectedIndex = -1;
             cmbCreateProductProvider.SelectedIndex = -1;
-            txtCreateProductStock.Text = "";
-            txtCreateProductPrice.Text = "";
+            mtxtCreateProductStock.Text = "";
+            mtxtCreateProductPrice.Text = "";
             cmbCreateProductIsAvailable.SelectedIndex = -1;
             txtCreateProductDescription.Text = "";
 
-            //Create Reset
+            //Update Delete Reset
+            cmbProductSelect.SelectedIndex = -1;
             txtUpdateProductName.Text = "";
             cmbUpdateProductCategory.SelectedIndex = -1;
             cmbUpdateProductProvider.SelectedIndex = -1;
-            txtUpdateProductStock.Text = "";
-            txtUpdateProductPrice.Text = "";
+            mtxtUpdateProductStock.Text = "";
             cmbUpdateProductIsAvailable.SelectedIndex = -1;
             txtUpdateProductDescription.Text = "";
+        }
+
+        // Validate price 
+        private bool CheckPrice(string price)
+        {
+            // Define a regular expression pattern for a valid price 
+            string pattern = @"^\$\d{1,4}\.\d{2}$";
+
+            // Check if the price matches the pattern
+            return Regex.IsMatch(price.Replace(" ", ""), pattern);
         }
 
         private void UpdateComboBoxes()
         {
             // Populate select combo boxes with data
             // Products setup
-            DataTable products = sendQuery("select product_id, name from product");
+            DataTable products = sendQuery("SELECT product_id, name from product");
             if (products.Rows.Count > 0)
             {
                 pProductInfo.Visible = false;
-                cmbProductPriceChange.DataSource = products;
-                cmbProductPriceChange.DisplayMember = products.Columns[1].ColumnName;
-                cmbProductPriceChange.ValueMember = products.Columns[0].ColumnName;
+                cmbProductSelect.DataSource = products;
+                cmbProductSelect.DisplayMember = products.Columns[1].ColumnName;
+                cmbProductSelect.ValueMember = products.Columns[0].ColumnName;
+                cmbProductSelect.SelectedIndex = -1;
+            }
+
+            //Price Change Load
+            DataTable productData = sendQuery("select product_id, name from product");
+            if (productData.Rows.Count > 0)
+            {
+                cmbProductPriceChange.DataSource = productData;
+                cmbProductPriceChange.DisplayMember = productData.Columns[1].ColumnName;
+                cmbProductPriceChange.ValueMember = productData.Columns[0].ColumnName;
                 cmbProductPriceChange.SelectedIndex = -1;
             }
         }
@@ -322,15 +335,12 @@ namespace OnlineStore
             // Show product info after selection
             pProductInfo.Visible = true;
 
-
-
             // Update info
             DataTable productInfo = sendQuery("SELECT * FROM product WHERE product_id = " + cmbProductSelect.SelectedValue);
             txtUpdateProductName.Text = productInfo.Rows[0]["name"].ToString();
             cmbUpdateProductCategory.SelectedValue = productInfo.Rows[0]["category_id"].ToString();
             cmbUpdateProductProvider.SelectedValue = productInfo.Rows[0]["provider_id"].ToString();
-            txtUpdateProductStock.Text = productInfo.Rows[0]["stock"].ToString();
-            txtUpdateProductPrice.Text = productInfo.Rows[0]["current_price"].ToString();
+            mtxtUpdateProductStock.Text = productInfo.Rows[0]["stock"].ToString();
             cmbUpdateProductIsAvailable.Text = productInfo.Rows[0]["is_available"].ToString();
             txtUpdateProductDescription.Text = productInfo.Rows[0]["description"].ToString();
         }
@@ -339,28 +349,30 @@ namespace OnlineStore
         {
             // Variables
             string name = txtCreateProductName.Text;
-            int category = Int32.Parse(cmbCreateProductCategory.SelectedValue.ToString());
-            int provider = Int32.Parse(cmbCreateProductProvider.SelectedValue.ToString());
-            int stock = Int32.Parse(txtCreateProductStock.Text);
-            decimal price = Decimal.Parse(txtCreateProductPrice.Text);
-            string isAvailableString = cmbCreateProductIsAvailable.Text;
-            bool isAvailable;
-            if (isAvailableString.Equals("true"))
-            {
-                isAvailable = true;
-            }
-            else
-            {
-                isAvailable = false;
-            }
+            var category = cmbCreateProductCategory.SelectedValue;
+            var provider = cmbCreateProductProvider.SelectedValue;
+            string stock = mtxtCreateProductStock.Text;
+            string price = mtxtCreateProductPrice.Text;
+            string isAvailable = cmbCreateProductIsAvailable.Text;
             string description = txtCreateProductDescription.Text;
 
-            // Return if NON NULL fields are blank or invalid
-            if (string.IsNullOrEmpty(name))
+            // Return if NOT NULL fields are blank or invalid
+            if (string.IsNullOrEmpty(name) || cmbCreateProductCategory.SelectedIndex == -1 || cmbCreateProductProvider.SelectedIndex == -1 || string.IsNullOrEmpty(stock) || !CheckPrice(price) || cmbCreateProductIsAvailable.SelectedIndex == -1)
             {
-                MessageBox.Show("Please ensure Name, Category, Provider, Stock, Price, and  Is Available have valid entries");
+                MessageBox.Show("Please ensure Name, Category, Provider, Stock, Price, and Is Available have valid entries");
                 return;
             }
+
+            // Update variables to correct data type
+            int categoryID = Convert.ToInt32(category);
+            int providerID = Convert.ToInt32(provider);
+            int stockINT = Convert.ToInt32(stock);
+            decimal priceDECIMAL = Decimal.Parse(price.Replace("$", ""));
+            bool isAvailableBOOL;
+            if (isAvailable.ToString().Equals("true"))
+                isAvailableBOOL = true;
+            else
+                isAvailableBOOL = false;
 
             // Use parameterized SQL to create a new product
             try
@@ -368,34 +380,58 @@ namespace OnlineStore
                 using (NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=OnlineStore;User Id=postgres;Password=HoeftHuesman366"))
                 {
                     conn.Open();
-                    using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO product (name, description, category_id, stock, current_price, is_available, provider_id) " +
+
+                    // Insert into product
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO product (name, category_id, provider_id, stock, current_price, is_available, description) " +
                                                                  "VALUES (@Name, " +
-                                                                         "@Description, " +
                                                                          "@Category, " +
+                                                                         "@Provider, " +
                                                                          "@Stock, " +
-                                                                         "@CurrentPrice, " +
+                                                                         "@Price, " +
                                                                          "@IsAvailable, " +
-                                                                         "@Provider)", conn))
+                                                                         "@Description) " +
+                                                                 "RETURNING product_id", conn))
                     {
                         cmd.Parameters.AddWithValue("@Name", name);
-                        cmd.Parameters.AddWithValue("@Description", category);
-                        cmd.Parameters.AddWithValue("@Category", provider);
-                        cmd.Parameters.AddWithValue("@Stock", stock);
-                        cmd.Parameters.AddWithValue("@CurrentPrice", price);
-                        cmd.Parameters.AddWithValue("@IsAvailable", isAvailable);
-                        cmd.Parameters.AddWithValue("@Provider", description);
-                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@Category", categoryID);
+                        cmd.Parameters.AddWithValue("@Provider", providerID);
+                        cmd.Parameters.AddWithValue("@Stock", stockINT);
+                        cmd.Parameters.AddWithValue("@Price", priceDECIMAL);
+                        cmd.Parameters.AddWithValue("@IsAvailable", isAvailableBOOL);
+                        cmd.Parameters.AddWithValue("@Description", description);
+
+                        // Execute scalar to get the inserted product_id
+                        int productID = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        // Insert into price_change (Initial price)
+                        using (NpgsqlCommand priceChangeCmd = new NpgsqlCommand("INSERT INTO price_change (product_id, is_original_price, new_price, reason_change) " +
+                                                                                "VALUES (@ProductID, " +
+                                                                                        "@IsOriginalPrice, " +
+                                                                                        "@NewPrice, " +
+                                                                                        "@ReasonChange)", conn))
+                        {
+                            priceChangeCmd.Parameters.AddWithValue("@ProductID", productID);
+                            priceChangeCmd.Parameters.AddWithValue("@IsOriginalPrice", true);
+                            priceChangeCmd.Parameters.AddWithValue("@NewPrice", priceDECIMAL);
+                            priceChangeCmd.Parameters.AddWithValue("@ReasonChange", "Initial Price");
+
+                            priceChangeCmd.ExecuteNonQuery();
+                        }
                     }
                 }
-                // Clear user input
-                txtUpdateProductName.Text = "";
-                cmbUpdateProductCategory.SelectedIndex = -1;
-                cmbUpdateProductProvider.SelectedIndex = -1;
-                txtUpdateProductStock.Text = "";
-                txtUpdateProductPrice.Text = "";
-                cmbUpdateProductIsAvailable.SelectedIndex = -1;
-                txtUpdateProductDescription.Text = "";
+
+                // Confirm & refresh
+                MessageBox.Show("Product created successfully");
                 UpdateComboBoxes();
+
+                // Clear user input
+                txtCreateProductName.Text = "";
+                cmbCreateProductCategory.SelectedIndex = -1;
+                cmbCreateProductProvider.SelectedIndex = -1;
+                mtxtCreateProductStock.Text = "";
+                mtxtCreateProductPrice.Text = "";
+                cmbCreateProductIsAvailable.SelectedIndex = -1;
+                txtCreateProductDescription.Text = "";
             }
 
             catch (Exception ex)
@@ -403,6 +439,98 @@ namespace OnlineStore
                 // Show error
                 MessageBox.Show("Error creating product: " + ex.Message);
             }
+        }
+
+        private void btnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            // Get productID & other variables
+            int productID = Convert.ToInt32(cmbProductSelect.SelectedValue);
+            string name = txtUpdateProductName.Text;
+            var category = cmbUpdateProductCategory.SelectedValue;
+            var provider = cmbUpdateProductProvider.SelectedValue;
+            string stock = mtxtUpdateProductStock.Text;
+            string isAvailable = cmbUpdateProductIsAvailable.Text;
+            string description = txtUpdateProductDescription.Text;
+
+            // Update variables to correct data type
+            int categoryID = Convert.ToInt32(category);
+            int providerID = Convert.ToInt32(provider);
+            int stockINT = Convert.ToInt32(stock);
+            bool isAvailableBOOL;
+            if (isAvailable.ToString().Equals("true"))
+                isAvailableBOOL = true;
+            else
+                isAvailableBOOL = false;
+
+            // Use parameterized SQL to update a product
+            try
+            {
+                using (NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=OnlineStore;User Id=postgres;Password=HoeftHuesman366"))
+                {
+                    conn.Open();
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE product " +
+                                                                 "SET name = @Name, " +
+                                                                      "category_id = @Category, " +
+                                                                      "provider_id = @Provider, " +
+                                                                      "stock = @Stock, " +
+                                                                      "is_available = @IsAvailable, " +
+                                                                      "description = @Description " +
+                                                                  "WHERE product_id = " + productID, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@Category", categoryID);
+                        cmd.Parameters.AddWithValue("@Provider", providerID);
+                        cmd.Parameters.AddWithValue("@Stock", stockINT);
+                        cmd.Parameters.AddWithValue("@IsAvailable", isAvailableBOOL);
+                        cmd.Parameters.AddWithValue("@Description", description);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                // Confirm & refresh table
+                MessageBox.Show("Product updated successfully");
+                UpdateComboBoxes();
+            }
+
+            catch (Exception ex)
+            {
+                // Show error
+                MessageBox.Show("Error updated product: " + ex.Message);
+            }
+        }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            // Get productID
+            int productID = Convert.ToInt32(cmbProductSelect.SelectedValue);
+
+            // Show error when product in currently in an active order
+            if (sendQuery("SELECT * FROM items_ordered " +
+                          "WHERE product_id = " + productID).Rows.Count > 0)
+            {
+                MessageBox.Show("Cannot delete this product as it's currently in active orders");
+                return;
+            }
+
+            // Show confimration box
+            DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                // Delete from price_change table using productID
+                sendQuery("DELETE FROM price_change WHERE product_id = " + productID);
+
+                // Delete from product table using productID 
+                sendQuery("DELETE FROM product WHERE product_id = " + productID);
+
+                // Confirm & refresh table/combo box
+                MessageBox.Show("Product deleted successfully");
+                pProductInfo.Visible = false;
+                cmbProductSelect.SelectedIndex = -1;
+                UpdateComboBoxes();
+            }
+
+            // Return when user clicks No
+            else
+                return;
         }
     }
 }

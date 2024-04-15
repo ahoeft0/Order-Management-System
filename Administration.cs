@@ -82,7 +82,7 @@ namespace OnlineStore
             // Populate views of each model with all data
             dgvCustomers.DataSource = sendQuery("SELECT * FROM customer");
             dgvCategories.DataSource = sendQuery("SELECT * FROM category");
-            dgvCustomers.DataSource = sendQuery("SELECT * FROM customer");
+            dgvProviders.DataSource = sendQuery("SELECT * FROM provider");
 
             // Populate combo boxes
             UpdateComboBoxes();
@@ -114,7 +114,7 @@ namespace OnlineStore
             if (!string.IsNullOrEmpty(zipCodeSTR))
                 zipCodeINT = Convert.ToInt32(zipCodeSTR);
 
-            // Return if NON NULL fields are blank or invalid
+            // Return if NOT NULL fields are blank or invalid
             if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email) || !CheckPhone(phone))
             {
                 MessageBox.Show("Please ensure First Name, Last Name, Email, and Phone have valid entries");
@@ -298,7 +298,7 @@ namespace OnlineStore
             // Variables
             string name = txtCreateCategoryName.Text;
 
-            // Return if NON NULL fields are blank or invalid
+            // Return if NOT NULL fields are blank or invalid
             if (string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Please ensure Name has a valid entry");
@@ -397,7 +397,7 @@ namespace OnlineStore
             DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                // Delete from customer table using customerID 
+                // Delete from category table using categoryID 
                 sendQuery("DELETE FROM category WHERE category_id = " + categoryID);
 
                 // Confirm & refresh table/combo box
@@ -426,7 +426,7 @@ namespace OnlineStore
             if (!string.IsNullOrEmpty(zipCodeSTR))
                 zipCodeINT = Convert.ToInt32(zipCodeSTR);
 
-            // Return if NON NULL fields are blank or invalid
+            // Return if NOT NULL fields are blank or invalid
             if (string.IsNullOrEmpty(name) || !CheckPhone(phone))
             {
                 MessageBox.Show("Please ensure Name, Email, and Phone have valid entries");
@@ -563,7 +563,7 @@ namespace OnlineStore
             DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                // Delete from customer table using customerID 
+                // Delete from provider table using providerID 
                 sendQuery("DELETE FROM provider WHERE provider_id = " + providerID);
 
                 // Confirm & refresh table/combo box

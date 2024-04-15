@@ -70,7 +70,6 @@
             this.label51 = new System.Windows.Forms.Label();
             this.cmbProviderSelect = new System.Windows.Forms.ComboBox();
             this.tabPage13 = new System.Windows.Forms.TabPage();
-            this.dgvProviders = new System.Windows.Forms.DataGridView();
             this.category = new System.Windows.Forms.TabPage();
             this.tabCategory = new System.Windows.Forms.TabControl();
             this.tabPage8 = new System.Windows.Forms.TabPage();
@@ -130,15 +129,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbCustomerSelect = new System.Windows.Forms.ComboBox();
             this.viewCustomer = new System.Windows.Forms.TabPage();
-            this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.administrationTabControl = new System.Windows.Forms.TabControl();
+            this.dgvProviders = new System.Windows.Forms.DataGridView();
+            this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.provider.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage11.SuspendLayout();
             this.tabPage12.SuspendLayout();
             this.pProviderInfo.SuspendLayout();
             this.tabPage13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProviders)).BeginInit();
             this.category.SuspendLayout();
             this.tabCategory.SuspendLayout();
             this.tabPage8.SuspendLayout();
@@ -152,8 +151,9 @@
             this.updateDeleteCustomer.SuspendLayout();
             this.pCustomerInfo.SuspendLayout();
             this.viewCustomer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.administrationTabControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProviders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage7
@@ -590,23 +590,6 @@
             this.tabPage13.Text = "View";
             this.tabPage13.UseVisualStyleBackColor = true;
             // 
-            // dgvProviders
-            // 
-            this.dgvProviders.AllowUserToAddRows = false;
-            this.dgvProviders.AllowUserToDeleteRows = false;
-            this.dgvProviders.AllowUserToResizeColumns = false;
-            this.dgvProviders.AllowUserToResizeRows = false;
-            this.dgvProviders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProviders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProviders.Location = new System.Drawing.Point(6, 7);
-            this.dgvProviders.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgvProviders.Name = "dgvProviders";
-            this.dgvProviders.RowHeadersVisible = false;
-            this.dgvProviders.RowHeadersWidth = 51;
-            this.dgvProviders.RowTemplate.Height = 24;
-            this.dgvProviders.Size = new System.Drawing.Size(884, 503);
-            this.dgvProviders.TabIndex = 5;
-            // 
             // category
             // 
             this.category.Controls.Add(this.tabCategory);
@@ -775,13 +758,13 @@
             // 
             this.dgvCategories.AllowUserToAddRows = false;
             this.dgvCategories.AllowUserToDeleteRows = false;
-            this.dgvCategories.AllowUserToResizeColumns = false;
             this.dgvCategories.AllowUserToResizeRows = false;
             this.dgvCategories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategories.Location = new System.Drawing.Point(6, 7);
             this.dgvCategories.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvCategories.Name = "dgvCategories";
+            this.dgvCategories.ReadOnly = true;
             this.dgvCategories.RowHeadersVisible = false;
             this.dgvCategories.RowHeadersWidth = 51;
             this.dgvCategories.RowTemplate.Height = 24;
@@ -1232,23 +1215,6 @@
             this.viewCustomer.Text = "View";
             this.viewCustomer.UseVisualStyleBackColor = true;
             // 
-            // dgvCustomers
-            // 
-            this.dgvCustomers.AllowUserToAddRows = false;
-            this.dgvCustomers.AllowUserToDeleteRows = false;
-            this.dgvCustomers.AllowUserToResizeColumns = false;
-            this.dgvCustomers.AllowUserToResizeRows = false;
-            this.dgvCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomers.Location = new System.Drawing.Point(6, 7);
-            this.dgvCustomers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgvCustomers.Name = "dgvCustomers";
-            this.dgvCustomers.RowHeadersVisible = false;
-            this.dgvCustomers.RowHeadersWidth = 51;
-            this.dgvCustomers.RowTemplate.Height = 24;
-            this.dgvCustomers.Size = new System.Drawing.Size(884, 503);
-            this.dgvCustomers.TabIndex = 5;
-            // 
             // administrationTabControl
             // 
             this.administrationTabControl.Controls.Add(this.customer);
@@ -1260,6 +1226,40 @@
             this.administrationTabControl.SelectedIndex = 0;
             this.administrationTabControl.Size = new System.Drawing.Size(918, 597);
             this.administrationTabControl.TabIndex = 1;
+            // 
+            // dgvProviders
+            // 
+            this.dgvProviders.AllowUserToAddRows = false;
+            this.dgvProviders.AllowUserToDeleteRows = false;
+            this.dgvProviders.AllowUserToResizeRows = false;
+            this.dgvProviders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProviders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProviders.Location = new System.Drawing.Point(6, 7);
+            this.dgvProviders.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvProviders.Name = "dgvProviders";
+            this.dgvProviders.ReadOnly = true;
+            this.dgvProviders.RowHeadersVisible = false;
+            this.dgvProviders.RowHeadersWidth = 51;
+            this.dgvProviders.RowTemplate.Height = 24;
+            this.dgvProviders.Size = new System.Drawing.Size(884, 503);
+            this.dgvProviders.TabIndex = 6;
+            // 
+            // dgvCustomers
+            // 
+            this.dgvCustomers.AllowUserToAddRows = false;
+            this.dgvCustomers.AllowUserToDeleteRows = false;
+            this.dgvCustomers.AllowUserToResizeRows = false;
+            this.dgvCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomers.Location = new System.Drawing.Point(6, 7);
+            this.dgvCustomers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvCustomers.Name = "dgvCustomers";
+            this.dgvCustomers.ReadOnly = true;
+            this.dgvCustomers.RowHeadersVisible = false;
+            this.dgvCustomers.RowHeadersWidth = 51;
+            this.dgvCustomers.RowTemplate.Height = 24;
+            this.dgvCustomers.Size = new System.Drawing.Size(884, 503);
+            this.dgvCustomers.TabIndex = 6;
             // 
             // Administration
             // 
@@ -1282,7 +1282,6 @@
             this.pProviderInfo.ResumeLayout(false);
             this.pProviderInfo.PerformLayout();
             this.tabPage13.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProviders)).EndInit();
             this.category.ResumeLayout(false);
             this.tabCategory.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
@@ -1302,8 +1301,9 @@
             this.pCustomerInfo.ResumeLayout(false);
             this.pCustomerInfo.PerformLayout();
             this.viewCustomer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.administrationTabControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProviders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1342,7 +1342,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbCustomerSelect;
         private System.Windows.Forms.TabPage viewCustomer;
-        private System.Windows.Forms.DataGridView dgvCustomers;
         private System.Windows.Forms.TabControl administrationTabControl;
         private System.Windows.Forms.Panel pCustomerInfo;
         private System.Windows.Forms.MaskedTextBox mtxtUpdateCustomerState;
@@ -1397,7 +1396,6 @@
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.ComboBox cmbProviderSelect;
         private System.Windows.Forms.TabPage tabPage13;
-        private System.Windows.Forms.DataGridView dgvProviders;
         private System.Windows.Forms.TabControl tabCategory;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.Button btnCreateCategory;
@@ -1413,5 +1411,7 @@
         private System.Windows.Forms.ComboBox cmbCategorySelect;
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.DataGridView dgvCategories;
+        private System.Windows.Forms.DataGridView dgvProviders;
+        private System.Windows.Forms.DataGridView dgvCustomers;
     }
 }
