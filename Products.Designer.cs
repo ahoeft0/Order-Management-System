@@ -378,6 +378,7 @@
             this.btnCreateProduct.TabIndex = 34;
             this.btnCreateProduct.Text = "Create";
             this.btnCreateProduct.UseVisualStyleBackColor = false;
+            this.btnCreateProduct.Click += new System.EventHandler(this.btnCreateProduct_Click);
             // 
             // label12
             // 
@@ -473,6 +474,7 @@
             this.cmbProductSelect.Name = "cmbProductSelect";
             this.cmbProductSelect.Size = new System.Drawing.Size(336, 24);
             this.cmbProductSelect.TabIndex = 56;
+            this.cmbProductSelect.SelectionChangeCommitted += new System.EventHandler(this.cmbProductSelect_SelectedIndexChanged);
             // 
             // pProductInfo
             // 

@@ -102,6 +102,8 @@ namespace OnlineStore
                 cmbProductSelect.ValueMember = productData.Columns[0].ColumnName;
                 cmbProductSelect.SelectedIndex = -1;
             }
+
+            UpdateComboBoxes();
         }
         
         private string mostPopularItem(DataTable productData)
@@ -297,6 +299,110 @@ namespace OnlineStore
             txtUpdateProductPrice.Text = "";
             cmbUpdateProductIsAvailable.SelectedIndex = -1;
             txtUpdateProductDescription.Text = "";
+        }
+
+        private void UpdateComboBoxes()
+        {
+            // Populate select combo boxes with data
+            // Products setup
+            DataTable products = sendQuery("select product_id, name from product");
+            if (products.Rows.Count > 0)
+            {
+                pProductInfo.Visible = false;
+                cmbProductPriceChange.DataSource = products;
+                cmbProductPriceChange.DisplayMember = products.Columns[1].ColumnName;
+                cmbProductPriceChange.ValueMember = products.Columns[0].ColumnName;
+                cmbProductPriceChange.SelectedIndex = -1;
+            }
+        }
+
+        private void cmbProductSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Update text to show selected product info
+            // Show product info after selection
+            pProductInfo.Visible = true;
+
+
+
+            // Update info
+            DataTable productInfo = sendQuery("SELECT * FROM product WHERE product_id = " + cmbProductSelect.SelectedValue);
+            txtUpdateProductName.Text = productInfo.Rows[0]["name"].ToString();
+            cmbUpdateProductCategory.SelectedValue = productInfo.Rows[0]["category_id"].ToString();
+            cmbUpdateProductProvider.SelectedValue = productInfo.Rows[0]["provider_id"].ToString();
+            txtUpdateProductStock.Text = productInfo.Rows[0]["stock"].ToString();
+            txtUpdateProductPrice.Text = productInfo.Rows[0]["current_price"].ToString();
+            cmbUpdateProductIsAvailable.Text = productInfo.Rows[0]["is_available"].ToString();
+            txtUpdateProductDescription.Text = productInfo.Rows[0]["description"].ToString();
+        }
+
+        private void btnCreateProduct_Click(object sender, EventArgs e)
+        {
+            // Variables
+            string name = txtCreateProductName.Text;
+            int category = Int32.Parse(cmbCreateProductCategory.SelectedValue.ToString());
+            int provider = Int32.Parse(cmbCreateProductProvider.SelectedValue.ToString());
+            int stock = Int32.Parse(txtCreateProductStock.Text);
+            decimal price = Decimal.Parse(txtCreateProductPrice.Text);
+            string isAvailableString = cmbCreateProductIsAvailable.Text;
+            bool isAvailable;
+            if (isAvailableString.Equals("true"))
+            {
+                isAvailable = true;
+            }
+            else
+            {
+                isAvailable = false;
+            }
+            string description = txtCreateProductDescription.Text;
+
+            // Return if NON NULL fields are blank or invalid
+            if (string.IsNullOrEmpty(name))
+            {
+                MessageBox.Show("Please ensure Name, Category, Provider, Stock, Price, and  Is Available have valid entries");
+                return;
+            }
+
+            // Use parameterized SQL to create a new product
+            try
+            {
+                using (NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=OnlineStore;User Id=postgres;Password=HoeftHuesman366"))
+                {
+                    conn.Open();
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO product (name, description, category_id, stock, current_price, is_available, provider_id) " +
+                                                                 "VALUES (@Name, " +
+                                                                         "@Description, " +
+                                                                         "@Category, " +
+                                                                         "@Stock, " +
+                                                                         "@CurrentPrice, " +
+                                                                         "@IsAvailable, " +
+                                                                         "@Provider)", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@Description", category);
+                        cmd.Parameters.AddWithValue("@Category", provider);
+                        cmd.Parameters.AddWithValue("@Stock", stock);
+                        cmd.Parameters.AddWithValue("@CurrentPrice", price);
+                        cmd.Parameters.AddWithValue("@IsAvailable", isAvailable);
+                        cmd.Parameters.AddWithValue("@Provider", description);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                // Clear user input
+                txtUpdateProductName.Text = "";
+                cmbUpdateProductCategory.SelectedIndex = -1;
+                cmbUpdateProductProvider.SelectedIndex = -1;
+                txtUpdateProductStock.Text = "";
+                txtUpdateProductPrice.Text = "";
+                cmbUpdateProductIsAvailable.SelectedIndex = -1;
+                txtUpdateProductDescription.Text = "";
+                UpdateComboBoxes();
+            }
+
+            catch (Exception ex)
+            {
+                // Show error
+                MessageBox.Show("Error creating product: " + ex.Message);
+            }
         }
     }
 }
