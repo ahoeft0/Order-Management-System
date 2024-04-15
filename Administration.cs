@@ -367,7 +367,7 @@ namespace OnlineStore
                 }
                 // Confirm & refresh table
                 MessageBox.Show("Category updated successfully");
-                dgvCustomers.DataSource = sendQuery("SELECT * FROM category");
+                dgvCategories.DataSource = sendQuery("SELECT * FROM category");
                 UpdateComboBoxes();
             }
 
@@ -624,6 +624,10 @@ namespace OnlineStore
             txtUpdateProviderCity.Text = "";
             mtxtUpdateProviderState.Text = "";
             mtxtUpdateProviderZipCode.Text = "";
+
+            dgvProviders.DataSource = sendQuery("SELECT * FROM provider");
+            dgvCategories.DataSource = sendQuery("SELECT * FROM category");
+            dgvCustomers.DataSource = sendQuery("SELECT * FROM customer");
         }
     }
 }
