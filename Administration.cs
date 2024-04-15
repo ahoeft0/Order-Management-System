@@ -144,7 +144,7 @@ namespace OnlineStore
                         cmd.Parameters.AddWithValue("@StreetAddress", streetAddress);
                         cmd.Parameters.AddWithValue("@City", city);
                         cmd.Parameters.AddWithValue("@State", state);
-                        cmd.Parameters.AddWithValue("@ZipCode", zipCodeINT);
+                        cmd.Parameters.AddWithValue("@ZipCode", zipCodeINT ?? (object)DBNull.Value);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -229,7 +229,7 @@ namespace OnlineStore
                         cmd.Parameters.AddWithValue("@StreetAddress", streetAddress);
                         cmd.Parameters.AddWithValue("@City", city);
                         cmd.Parameters.AddWithValue("@State", state);
-                        cmd.Parameters.AddWithValue("@ZipCode", zipCodeINT);
+                        cmd.Parameters.AddWithValue("@ZipCode", zipCodeINT ?? (object)DBNull.Value);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -452,7 +452,7 @@ namespace OnlineStore
                         cmd.Parameters.AddWithValue("@StreetAddress", streetAddress);
                         cmd.Parameters.AddWithValue("@City", city);
                         cmd.Parameters.AddWithValue("@State", state);
-                        cmd.Parameters.AddWithValue("@ZipCode", zipCodeINT);
+                        cmd.Parameters.AddWithValue("@ZipCode", zipCodeINT ?? (object)DBNull.Value);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -527,7 +527,7 @@ namespace OnlineStore
                         cmd.Parameters.AddWithValue("@StreetAddress", streetAddress);
                         cmd.Parameters.AddWithValue("@City", city);
                         cmd.Parameters.AddWithValue("@State", state);
-                        cmd.Parameters.AddWithValue("@ZipCode", zipCodeINT);
+                        cmd.Parameters.AddWithValue("@ZipCode", zipCodeINT ?? (object)DBNull.Value);
                         cmd.ExecuteNonQuery();
                     }
                 }
