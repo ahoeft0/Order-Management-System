@@ -578,52 +578,5 @@ namespace OnlineStore
             else
                 return;
         }
-
-        private void resetForms(object sender, EventArgs e)
-        {
-            //Customer
-            txtCreateCustomerFirstName.Text = "";
-            txtCreateCustomerLastName.Text = "";
-            txtCreateCustomerEmail.Text = "";
-            mtxtCreateCustomerPhone.Text = "";
-            txtCreateCustomerStreetAddress.Text = "";
-            txtCreateCustomerCity.Text = "";
-            mtxtCreateCustomerState.Text = "";
-            mtxtCreateCustomerZipCode.Text = "";
-
-            cmbCustomerSelect.SelectedIndex = -1;
-            pCustomerInfo.Visible = false;
-            txtUpdateCustomerFirstName.Text = "";
-            txtUpdateCustomerLastName.Text = "";
-            txtUpdateCustomerEmail.Text = "";
-            mtxtUpdateCustomerPhone.Text = "";
-            txtUpdateCustomerStreetAddress.Text = "";
-            txtUpdateCustomerCity.Text = "";
-            mtxtUpdateCustomerState.Text = "";
-            mtxtUpdateCustomerZipCode.Text = "";
-
-            //Category
-            cmbCategorySelect.SelectedIndex = -1;
-            pCategoryInfo.Visible = false;
-            txtCreateCategoryName.Text = "";
-            txtUpdateCategoryName.Text = "";
-
-            //Provider
-            txtCreateProviderName.Text = "";
-            mtxtCreateProviderPhone.Text = "";
-            txtCreateProviderStreetAddress.Text = "";
-            txtCreateProviderCity.Text = "";
-            mtxtCreateProviderState.Text = "";
-            mtxtCreateProviderZipCode.Text = "";
-
-            cmbProviderSelect.SelectedIndex = -1;
-            pProviderInfo.Visible = false;
-            txtUpdateProviderName.Text = "";
-            mtxtUpdateProviderPhone.Text = "";
-            txtUpdateProviderStreetAddress.Text = "";
-            txtUpdateProviderCity.Text = "";
-            mtxtUpdateProviderState.Text = "";
-            mtxtUpdateProviderZipCode.Text = "";
-        }
     }
 }
