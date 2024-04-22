@@ -128,7 +128,7 @@ namespace OnlineStore
                                             "and o.order_id = " + cmbOrder.SelectedValue);
             txtOrderNumber.Text = order.Rows[0].ItemArray[0].ToString();
             txtTotalPrice.Text = order.Rows[0].ItemArray[2].ToString();
-            txtDateOrdered.Text = order.Rows[0].ItemArray[3].ToString();
+            txtDateOrdered.Text = order.Rows[0].ItemArray[3].ToString().Split(' ')[0];
         }
 
         private void btnAddToOrder_Click(object sender, EventArgs e)
